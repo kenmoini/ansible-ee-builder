@@ -1,0 +1,17 @@
+variables:
+  - group: RegistrySecrets
+
+trigger:
+  branches: # Branch names to include or exclude for triggering a run.
+    include: [ 'main' ]
+  paths: # File paths to include or exclude for triggering a run.
+    include: [ 'execution-environments/nutanix-ee/' ]
+
+extends:
+  template: ../../.azure/pipelines-ee-base.yml
+  parameters:
+    REGISTRY_USERNAME: $(REGISTRY_USERNAME)
+    REGISTRY_PASSWORD: $(REGISTRY_PASSWORD)
+    REGISTRY_PATH: kenmoini
+    EE_IMAGE_NAME: ansible-nutanix-ee
+    EE_FOLDER_NAME: execution-environments/nutanix-ee
