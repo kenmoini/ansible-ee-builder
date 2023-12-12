@@ -18,5 +18,4 @@ There is a base/template GitHub Action in this repository under `.github/workflo
 
 ## TODO
 
-- Add ADO Pipelines
-- Add base extension docs
+- Add base extension docs for GitHub Actions
