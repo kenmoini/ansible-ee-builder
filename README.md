@@ -16,6 +16,10 @@ There is a base/template GitHub Action in this repository under `.github/workflo
 - **Windows EE** - `quay.io/kenmoini/ansible-windows-ee` - A basic Execution Environment for automating Windows targets
 - **ZTP EE** - `quay.io/kenmoini/ansible-ztp-ee` - An EE that can be used for OpenShift Zero Touch Provisioning practices
 
+## Documentation
+
+- [Azure DevOps Setup and Usage](docs/azure-devops-setup.md)
+
 ## TODO
 
 - Add base extension docs for GitHub Actions
