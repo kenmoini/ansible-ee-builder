@@ -7,6 +7,13 @@ trigger:
   paths: # File paths to include or exclude for triggering a run.
     include: [ 'execution-environments/nutanix-ee/' ]
 
+schedules:
+  - cron: '0 0 * * 0'
+    displayName: Sunday night builds
+    branches:
+      include:
+        - main
+
 extends:
   template: ../../.azure/pipelines-ee-base.yml
   parameters:
