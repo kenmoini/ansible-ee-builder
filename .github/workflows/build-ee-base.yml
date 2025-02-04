@@ -44,7 +44,7 @@ on:
       EE_FILE_NAME:
         description: 'name of the Decision/Execution Environment config, defaults to execution-environment.yaml'
         default: 'execution-environment.yml'
-        required: true
+        required: false
         type: string
 
     secrets:
