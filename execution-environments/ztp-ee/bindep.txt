@@ -4,3 +4,5 @@ git [platform:rpm]
 curl-minimal [platform:rpm]
 wget [platform:rpm]
 which [platform:rpm]
+iputils [platform:rpm]
+ 
