@@ -9,3 +9,6 @@ collections:
     version: 4.0.1
   - name: community.general
   - name: infra.controller_configuration
+  - name: kenmoini.powerdns_admin
+  - name: kenmoini.redfish
+  - name: kenmoini.phpipam
