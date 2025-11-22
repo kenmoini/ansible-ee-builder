@@ -123,7 +123,7 @@ jobs:
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
           ansible-builder build \
-          --build-arg ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN=${{ secrets.AH_TOKEN }} \
+          --build-arg ANSIBLE_GALAXY_SERVER_RH_HUB_TOKEN=${{ secrets.AH_TOKEN }} \
           --file=${{ inputs.EE_FILE_NAME }} \
           --tag=${{ inputs.EE_IMAGE_NAME }}:${{ inputs.EE_IMAGE_TAG }} \
           --tag=${{ inputs.EE_IMAGE_NAME }}:${{ github.sha }} \
