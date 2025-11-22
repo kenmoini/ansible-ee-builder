@@ -30,7 +30,9 @@ dependencies:
 additional_build_files:
   - src: root-ca/*.pem
     dest: certs
-
+  - src: ansible.cfg
+    dest: configs
+    
 additional_build_steps:
   prepend_galaxy:
     # Environment variables used for Galaxy client configurations
