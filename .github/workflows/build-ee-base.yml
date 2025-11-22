@@ -61,9 +61,9 @@ on:
       REDHAT_USERNAME:
         description: 'Optional for RH registry login'
         required: false
-      #AH_TOKEN:
-      #  description: 'API token for hosted automation hub'
-      #  required: false
+      AH_TOKEN:
+        description: 'API token for hosted automation hub'
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -104,6 +104,7 @@ jobs:
 
       - name: Build image
         id: build-image
+        if: ${{ secrets.AH_TOKEN == 0 }}
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
           ansible-builder build \
@@ -111,10 +112,22 @@ jobs:
           --tag=${{ inputs.EE_IMAGE_NAME }}:${{ inputs.EE_IMAGE_TAG }} \
           --tag=${{ inputs.EE_IMAGE_NAME }}:${{ github.sha }} \
           --tag=${{ inputs.EE_IMAGE_NAME }}:${{ steps.date.outputs.date }}
+
+      - name: Build image with access to an automation hub
+        id: build-image-ah
+        if: ${{ secrets.AH_TOKEN != 0 }}
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}
+        run: |
+          ansible-builder build \
+          --build-arg ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN=${{ secrets.AH_TOKEN }} \
+          --file=${{ inputs.EE_FILE_NAME }} \
+          --tag=${{ inputs.EE_IMAGE_NAME }}:${{ inputs.EE_IMAGE_TAG }} \
+          --tag=${{ inputs.EE_IMAGE_NAME }}:${{ github.sha }} \
+          --tag=${{ inputs.EE_IMAGE_NAME }}:${{ steps.date.outputs.date }}
 #         env:
 #           ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN: ${{ secrets.AH_TOKEN }}
 # Above env var doesn't work yet: https://github.com/ansible/ansible-builder/issues/346
-
+          
       - name: Push To Target Registry
         id: push-to-registry
         uses: redhat-actions/push-to-registry@v2
