@@ -104,7 +104,9 @@ jobs:
 
       - name: Build image
         id: build-image
-        if: ${{ secrets.AH_TOKEN == '' }}
+        env:
+          AH_TOKEN: ${{ secrets.AH_TOKEN }}
+        if: ${{ env.AH_TOKEN == '' }}
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
           ansible-builder build \
@@ -115,7 +117,9 @@ jobs:
 
       - name: Build image with access to an automation hub
         id: build-image-ah
-        if: ${{ secrets.AH_TOKEN != '' }}
+        env:
+          AH_TOKEN: ${{ secrets.AH_TOKEN }}
+        if: ${{ env.AH_TOKEN != '' }}
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
           ansible-builder build \
