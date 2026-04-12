@@ -1,9 +1,10 @@
 name: EE build and push - Default
 
 on:
-  pull_request:
-    paths:
-      - 'execution-environments/default-ee/**'
+  # Disable pull_request to prevent malicious PRs
+  # pull_request:
+  #   paths:
+  #     - 'execution-environments/default-ee/**'
   push:
     branches:
       - main
