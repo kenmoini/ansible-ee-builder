@@ -1,9 +1,10 @@
 name: EE build and push - Kubernetes
 
 on:
-  pull_request:
-    paths:
-      - 'execution-environments/k8s-ee/**'
+  # Disable pull_request to prevent malicious PRs
+  # pull_request:
+  #   paths:
+  #     - 'execution-environments/k8s-ee/**'
   push:
     branches:
       - main
