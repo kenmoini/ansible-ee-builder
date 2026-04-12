@@ -1,9 +1,10 @@
 name: EE build and push - Nutanix
 
 on:
-  pull_request:
-    paths:
-      - 'execution-environments/nutanix-ee/**'
+  # Disable pull_request to prevent malicious PRs
+  # pull_request:
+  #   paths:
+  #     - 'execution-environments/nutanix-ee/**'
   push:
     branches:
       - main
