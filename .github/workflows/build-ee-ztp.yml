@@ -1,9 +1,10 @@
 name: EE build and push - ZTP
 
 on:
-  pull_request:
-    paths:
-      - 'execution-environments/ztp-ee/**'
+  # Disable pull_request to prevent malicious PRs
+  # pull_request:
+  #   paths:
+  #     - 'execution-environments/ztp-ee/**'
   push:
     branches:
       - main
