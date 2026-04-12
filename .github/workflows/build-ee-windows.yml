@@ -1,9 +1,10 @@
 name: EE build and push - Windows
 
 on:
-  pull_request:
-    paths:
-      - 'execution-environments/windows-ee/**'
+  # Disable pull_request to prevent malicious PRs
+  # pull_request:
+  #   paths:
+  #     - 'execution-environments/windows-ee/**'
   push:
     branches:
       - main
